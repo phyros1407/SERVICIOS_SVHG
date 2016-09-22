@@ -38,21 +38,16 @@ public class servicios extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 		DAOFactory dao = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 		servicesDAO serv = dao.getServiceDAO();
 		
 		String action = request.getParameter("action");
+		System.out.println("imprimir action --->"+action);
 		
 		if(action.equalsIgnoreCase("deps")){
+			
+			System.out.println("hasta aca llego la webada");
 			
 			ArrayList<DepartamentoBean> departamentos = serv.listarDepartamentos();
 			
@@ -73,6 +68,7 @@ public class servicios extends HttpServlet {
 		if(action.equalsIgnoreCase("pros")){
 			
 			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println("imprimir id_dep ---->"+id);
 			ArrayList<ProvinciaBean> provincias = serv.listarProvincias(id);
 			
 			ResponseObject responseobj=null;
@@ -107,6 +103,14 @@ public class servicios extends HttpServlet {
 			
 			
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 	
 		
 	}

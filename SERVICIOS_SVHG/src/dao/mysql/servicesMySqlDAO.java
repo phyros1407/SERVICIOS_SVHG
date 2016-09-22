@@ -25,9 +25,10 @@ public class servicesMySqlDAO extends MySqlDAOFactory implements servicesDAO{
 			Connection con = MySqlDAOFactory.obtenerConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "SELECT * FROM DEPARTAMENTO";
+			String query = "SELECT * FROM T_DEPARTAMENTO";
 			
 			ResultSet rs = stmt.executeQuery(query);
+			System.out.println(query);
 			
 			DepartamentoBean departamento = null;
 			while(rs.next()){
@@ -65,7 +66,7 @@ public class servicesMySqlDAO extends MySqlDAOFactory implements servicesDAO{
 			Connection con = MySqlDAOFactory.obtenerConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "SELECT * FROM PROVINCIA WHERE ID_DEPARTAMENTO = "+id;
+			String query = "SELECT * FROM T_PROVINCIA WHERE ID_DEPARTAMENTO = "+id;
 			
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -75,6 +76,7 @@ public class servicesMySqlDAO extends MySqlDAOFactory implements servicesDAO{
 				provincia = new ProvinciaBean();
 				provincia.setId(rs.getInt("id"));
 				provincia.setProvincia(rs.getString("provincia"));
+				provincia.setId_departamento(rs.getInt("id_departamento"));
 				provincias.add(provincia);
 			}
 			
@@ -106,7 +108,7 @@ public class servicesMySqlDAO extends MySqlDAOFactory implements servicesDAO{
 			Connection con = MySqlDAOFactory.obtenerConexion();
 			Statement stmt = con.createStatement();
 			
-			String query = "SELECT * FROM DISTRITO WHERE ID_PROVINCIA = "+id;
+			String query = "SELECT * FROM T_DISTRITO WHERE ID_PROVINCIA = "+id;
 			
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -116,6 +118,7 @@ public class servicesMySqlDAO extends MySqlDAOFactory implements servicesDAO{
 				distrito = new DistritoBean();
 				distrito.setId(rs.getInt("id"));
 				distrito.setDistrito(rs.getString("distrito"));
+				distrito.setId_provincia(rs.getInt("id_provincia"));
 				distritos.add(distrito);
 			}
 			

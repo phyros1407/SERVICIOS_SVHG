@@ -16,8 +16,8 @@ public class MySqlDAOFactory extends DAOFactory{
 		
 		 try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url="jdbc:mysql://localhost:3306/bd_ubigeo";
-			conexion = DriverManager.getConnection(url,"root","root");
+			String url="jdbc:mysql://ca-cdbr-azure-central-a.cloudapp.net/bd_ubigeo";
+			conexion = DriverManager.getConnection(url,"b3b8a45359711c","12e69404");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
